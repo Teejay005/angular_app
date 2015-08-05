@@ -1,12 +1,21 @@
 'use strict';
 
-var shops = angular.module('ehealthApp.pouchdb', []);
+var pouchdb = angular.module('ehealthApp.pouchdb', ['pouchdb']);
 
-var PouchdbCtrl = function ($scope) {
-	$scope.hello = [1,2,3];
-};
+pouchdb.controller('PouchdbCtrl', function ($scope, PouchdbService){
+  var obj = {'aname': "here"};
+ PouchdbService.add(obj).then(function(response){
+     $scope.results = response;
+  });
+});
 
-shops.controller('PouchdbCtrl', PouchdbCtrl);
+pouchdb.factory('ehealthDB', function(pouchdb) {
+    return pouchdb.create('ehealthDB');
+});
 
-
+pouchdb.factory('PouchdbService', function(ehealthDB) {
+    return {
+        add: function(obj) { ehealthDB.put(obj); }
+    };
+});
 
