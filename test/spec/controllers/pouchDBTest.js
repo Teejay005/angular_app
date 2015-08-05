@@ -11,7 +11,7 @@ describe('Controller: PouchdbCtrl', function () {
       $provide.value('PouchdbService', mockPouchdbService);
     });
 
-  // Initialize the controller and a mock scope
+  // Initialize the controller and a mock scope and PouchdbService
   beforeEach(inject(function ($controller, $rootScope, $q) {
     mockPouchdbService = jasmine.createSpyObj('mockPouchdbService', ['add']);
 
@@ -22,20 +22,33 @@ describe('Controller: PouchdbCtrl', function () {
 
     $controller('PouchdbCtrl', {
       $scope: scope, 
-      PouchdbService: mockPouchdbService
-    });
-  })
-);
+        PouchdbService: mockPouchdbService
+      });
+    })
+  );
 
-  it('should add a given document to pouch db', function () {
+  it('should set results to response from pouchdb', function () {
     var stubResults = {
+      '_id': 1,
+      'firstName': 'Adetunji',
+      'lastName': 'Sunmonu'
+    };
+
+    scope.myName = {
       'firstName': 'Adetunji',
       'lastName': 'Sunmonu'
     };
 
     deferred.resolve(stubResults);
     scope.$apply();
-    expect(scope.results.firstName).toBe('Adetunji');
+    expect(scope.results._id).toBe(1);
+  });
+
+  it('should set results to undefined if data cannot be saved to couchdb', function () {
+
+    deferred.reject();
+    scope.$apply();
+    expect(scope.results).toBeUndefined();
   });
 
 });

@@ -3,8 +3,8 @@
 var pouchdb = angular.module('ehealthApp.pouchdb', ['pouchdb']);
 
 pouchdb.controller('PouchdbCtrl', function ($scope, PouchdbService){
-  var obj = {'aname': "here"};
- PouchdbService.add(obj).then(function(response){
+
+ PouchdbService.add($scope.myName).then(function(response){
      $scope.results = response;
   });
 });
