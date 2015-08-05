@@ -17,7 +17,13 @@ describe('Controller: PouchdbCtrl', function () {
   })
 );
 
-  it('should attach a list of awesomeThings to the scope', function () {
-    expect(scope.hello.length).toBe(3);
+  it('should add a given document to pouch db', function () {
+    var myName = {
+      'firstName': 'Adetunji',
+      'lastName': 'Sunmonu'
+    };
+    scope.addToPouchDB(myName);
+    expect(scope.results.firstName).toBe('Adetunji');
   });
+
 });
