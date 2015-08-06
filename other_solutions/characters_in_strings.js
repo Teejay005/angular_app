@@ -29,3 +29,25 @@ var find_chars = function(string1, string2){
   });
   return newString;
 }
+
+// order N*N 
+
+var find_chars_in_n_strings = function(){
+  //converts arguments passed to an array
+  var args = Array.prototype.slice.call(arguments);
+  return args.reduce(function(prev, curre){
+      return find_chars(prev, curre)
+  });
+};
+
+
+
+
+
+
+
+
+
+
+
+
