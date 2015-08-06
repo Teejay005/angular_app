@@ -7,6 +7,7 @@ module.exports = function(config) {
       'bower_components/angular/angular.js',
       'bower_components/angular-mocks/angular-mocks.js',
       'bower_components/angular-pouchdb/angular-pouchdb.js',
+      'bower_components/pouchdb/dist/pouchdb.js',
       'app/scripts/*.js',
       'app/scripts/**/*.js',
       'test/spec/**/*.js'

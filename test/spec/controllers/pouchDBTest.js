@@ -29,26 +29,30 @@ describe('Controller: PouchdbCtrl', function () {
 
   it('should set results to response from pouchdb', function () {
     var stubResults = {
-      '_id': 1,
-      'firstName': 'Adetunji',
-      'lastName': 'Sunmonu'
+      ok: true,
+      _id: "1", 
+      rev: "1-y"
     };
 
     scope.myName = {
+      '_id': '1',
       'firstName': 'Adetunji',
       'lastName': 'Sunmonu'
     };
 
     deferred.resolve(stubResults);
+
     scope.$apply();
-    expect(scope.results._id).toBe(1);
+
+    expect(scope.results._id).toBe(scope.myName._id);
+    expect(scope.results.ok).toBeTruthy();
   });
 
   it('should set results to undefined if data cannot be saved to couchdb', function () {
-
-    deferred.reject();
+    var errorMessage = {'status': 409}
+    deferred.reject(errorMessage);
     scope.$apply();
-    expect(scope.results).toBeUndefined();
+    expect(scope.results).toBe('Record exists');
   });
 
 });

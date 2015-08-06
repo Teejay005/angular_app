@@ -3,10 +3,15 @@
 var pouchdb = angular.module('ehealthApp.pouchdb', ['pouchdb']);
 
 pouchdb.controller('PouchdbCtrl', function ($scope, PouchdbService){
-
- PouchdbService.add($scope.myName).then(function(response){
+  var myName = {_id: '1', 'firstName': 'Adetunji', 'lastName': 'Sunmonu'};
+  PouchdbService.add(myName).then(function(response){
      $scope.results = response;
+  }, function(err){
+      if(err.status === 409) {
+        $scope.results = 'Record exists';
+      }
   });
+
 });
 
 pouchdb.factory('ehealthDB', function(pouchdb) {
@@ -15,7 +20,12 @@ pouchdb.factory('ehealthDB', function(pouchdb) {
 
 pouchdb.factory('PouchdbService', function(ehealthDB) {
     return {
-        add: function(obj) { ehealthDB.put(obj); }
+        add: function(obj){ 
+          return ehealthDB.put(obj);
+        },
+        get: function(id){
+          return ehealthDB.get(id, {conflicts: true});
+        }
     };
 });
 
