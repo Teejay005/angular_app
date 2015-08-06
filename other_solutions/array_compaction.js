@@ -23,5 +23,5 @@ var compact_array = function(arr){
         result.push(a);
     }
   });
-  return newArr;
+  return result;
 };

@@ -14,7 +14,7 @@ Write a function that takes an array of integers and efficiently calculates and 
 
 //Note: lcm == least common multiple, gcd == greates common denominator
 
-var calcuate_lcm  = function(arr){
+var calculate_lcm  = function(arr){
   return arr.reduce(function(prevValue, currentValue){
     return prevValue*currentValue/calculate_gcd(prevValue,currentValue);
   });
