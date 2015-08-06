@@ -41,6 +41,30 @@ var find_chars_in_n_strings = function(){
 };
 
 
+// one of order N
+
+var find_chars_one_in_n_strings = function(){
+  var i, matchingChars, string1, commonString = '';
+  
+  string1 = arguments[0];
+  for(i=1; i< arguments.length; i++){
+      matchingChars = find_chars(string1, arguments[i]);
+      commonString = commonString.concat(matchingChars);
+  };
+  return remove_duplicate(commonString);
+};
+
+var remove_duplicate = function(string){
+  var arr = string.split('');
+  var result  = '';
+  arr.forEach(function(a){
+    if(result.indexOf(a) == -1){
+        result = result.concat(a);
+    }
+  });
+  return result;
+};
+
 
 
 
