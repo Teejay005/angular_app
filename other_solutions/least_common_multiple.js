@@ -24,5 +24,5 @@ var calculate_gcd = function(firstNumber, secondNumber) {
     if ( ! secondNumber) {
         return firstNumber;
     }
-    return gcd(secondNumber, firstNumber % secondNumber);
+    return calculate_gcd(secondNumber, firstNumber % secondNumber);
 };
