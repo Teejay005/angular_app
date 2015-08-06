@@ -1,8 +1,8 @@
 ## Traversing a tree  - Depth first
 
-Trees are not linear data structure with logical start and logical end where for each node we have only one next element.
+Trees are not linear data structure with a logical start and a logical end, where for each node we have only one next element.
 
-At a particular node in a tree we can have more than one particular direction. Tree traversal is the process of visiting each node in a tree exactly once. There are generally two methods of tree traversing:
+At a particular node in a tree we can have more than one particular direction/element. Tree traversal is the process of visiting each node in a tree exactly once. There are generally two methods of tree traversing:
 1. Breadth first
 2. Depth first.
 
