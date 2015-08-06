@@ -56,5 +56,4 @@ describe('Controller: PouchdbCtrl', function () {
 
     expect('Adetunji').toBe(scope.nameFromDB.firstName);
   });
-
 });
