@@ -12,20 +12,23 @@ pouchdb.controller('PouchdbCtrl', function ($scope, PouchdbService){
       }
   });
 
+  PouchdbService.get(myName._id).then(function(response){
+      $scope.nameFromDB = response;
+  });
 });
 
-pouchdb.factory('ehealthDB', function(pouchdb) {
+pouchdb.factory('EhealthDB', function(pouchdb) {
     return pouchdb.create('ehealthDB');
 });
 
-pouchdb.factory('PouchdbService', function(ehealthDB) {
-    return {
-        add: function(obj){ 
-          return ehealthDB.put(obj);
-        },
-        get: function(id){
-          return ehealthDB.get(id, {conflicts: true});
-        }
-    };
+pouchdb.factory('PouchdbService', function(EhealthDB) {
+  return {
+    add: function(obj){ 
+      return EhealthDB.put(obj);
+    },
+    get: function(id){
+      return EhealthDB.get(id, {conflicts: true});
+    }
+  };
 });
 
