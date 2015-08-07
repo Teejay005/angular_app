@@ -12,7 +12,7 @@ Write a function that takes an array of integers and efficiently calculates and 
 
 //Solution
 
-//Note: lcm == least common multiple, gcd == greates common denominator
+//Note: lcm == least common multiple, gcd == greatest common denominator
 
 var calculate_lcm  = function(arr){
   return arr.reduce(function(prevValue, currentValue){
